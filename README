@@ -1,0 +1,43 @@
+vacban(1)                   General Commands Manual                  vacban(1)
+
+NAME
+       vacban - Keep track of players who possible cheat
+
+SYNOPSIS
+       vacban [OPTION]...
+
+DESCRIPTION
+       vacban  is  a  way  to keep trach of people who possible cheats in CSGO
+       Mach making.
+
+OPTIONS
+       -a, --add
+           Add ID to database
+
+       -d, --dbfile
+           Database file in use. "~/.vacbandb" is used if blank
+
+       -s, --show-banned
+           Show list of banned accounts
+
+       -u, --update
+           Update database with banned  information.   Use  twice  to  recheck
+           already banned accounts
+
+       -h, --help
+           Show help and exit
+
+       -V, --version
+           Output version information
+
+DATABASE FILE
+       The database file contains one line for each tracked player, with three
+       fields delimited by colon (":"). The fields are:
+
+       o   steam id
+
+       o   reported timestamp
+
+       o   banned timestamp, 0 when not banned
+
+                                                                     vacban(1)

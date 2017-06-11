@@ -1,0 +1,68 @@
+.TH vacban 1
+.SH "NAME"
+vacban \- Keep track of players who possible cheat
+
+.SH "SYNOPSIS"
+vacban [OPTION]...
+
+.SH "DESCRIPTION"
+vacban is a way to keep trach of people who possible cheats in CSGO Mach making.
+
+.SH "OPTIONS"
+
+.IP "\fB-a\fR, \fB--add\fR" 4
+Add ID to database
+
+.IP "\fB-d\fR, \fB--dbfile\fR" 4
+Database file in use. \(lq~/.vacbandb\(rq is used if blank
+
+.IP "\fB-s\fR, \fB--show-banned\fR" 4
+Show list of banned accounts
+
+.IP "\fB-u\fR, \fB--update\fR" 4
+Update database with banned information.
+Use twice to recheck already banned accounts
+
+.IP "\fB-h\fR, \fB--help\fR" 4
+Show help and exit
+
+.IP "\fB-V\fR, \fB--version\fR" 4
+Output version information
+
+.SH "DATABASE FILE"
+The database file contains one line for each tracked player, with three fields
+delimited by colon (\(lq:\(rq)\&. The fields are:
+.sp
+.RS 4
+.ie n \{\
+\h'-04'\(bu\h'+3'\c
+.\}
+.el \{\
+.sp -1
+.IP \bu 2.3
+.\}
+steam id
+.RE
+.sp
+.RS 4
+.ie n \{\
+\h'-04'\(bu\h'+3'\c
+.\}
+.el \{\
+.sp -1
+.IP \bu 2.3
+.\}
+reported timestamp
+.RE
+.sp
+.RS 4
+.ie n \{\
+\h'-04'\(bu\h'+3'\c
+.\}
+.el \{\
+.sp -1
+.IP \bu 2.3
+.\}
+banned timestamp, 0 when not banned
+.RE
+.PP
