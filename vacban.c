@@ -214,7 +214,11 @@ static int update(vacdb_t *db, int check_banned)
 			return EXIT_FAILURE;
 		}
 		else if (pids[forkix] == 0) {
-			printf("%d - %s\n", forkix, entries[forkix]->id);
+#ifdef VACBAN_DEBUG
+			printf("%d - %d - %d - %s\n", forkix,
+			       getpid(), getppid(),
+			       entries[forkix]->id);
+#endif
 			close(fds[forkix][0]);
 			if (write(fds[forkix][1],
 				  is_banned(url) ? "1" : "0", 2) == -1) {
