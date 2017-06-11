@@ -24,7 +24,7 @@ vacdb_t *vacdb_init(void)
 	return db;
 }
 
-int vacdb_load(vacdb_t *db, char *dbfile)
+int vacdb_load(vacdb_t * db, char *dbfile)
 {
 	char line[512], *pline;
 	vacdb_entry_t entry;
@@ -51,7 +51,7 @@ int vacdb_load(vacdb_t *db, char *dbfile)
 	return 0;
 }
 
-vacdb_entry_t *vacdb_get_by_id(vacdb_t *db, char *id)
+vacdb_entry_t *vacdb_get_by_id(vacdb_t * db, char *id)
 {
 	int i = 0;
 	for (i = 0; i < db->length; i++)
@@ -61,7 +61,7 @@ vacdb_entry_t *vacdb_get_by_id(vacdb_t *db, char *id)
 	return NULL;
 }
 
-int vacdb_add(vacdb_t *db, vacdb_entry_t *data)
+int vacdb_add(vacdb_t * db, vacdb_entry_t * data)
 {
 	vacdb_entry_t **ttmp, *entry;
 
@@ -81,15 +81,14 @@ int vacdb_add(vacdb_t *db, vacdb_entry_t *data)
 				     sizeof(vacdb_entry_t *) * db->size))) {
 			free(entry);
 			return 1;
-		}
-		else {
+		} else {
 			db->table = ttmp;
 		}
 	}
 	return 0;
 }
 
-int vacdb_write(vacdb_t *db, char *dbfile)
+int vacdb_write(vacdb_t * db, char *dbfile)
 {
 	int i = 0;
 	FILE *dbfp;
@@ -110,7 +109,7 @@ int vacdb_write(vacdb_t *db, char *dbfile)
 	return 0;
 }
 
-void vacdb_free(vacdb_t *db)
+void vacdb_free(vacdb_t * db)
 {
 	vacdb_entry_t *entry;
 	int i = 0;

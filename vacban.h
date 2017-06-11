@@ -2,6 +2,6 @@
 #define _H_VACBAN 1
 
 #define PROGRAM_NAME "vacban"
-#define PROGRAM_VERSION "1.1.1"
+#define PROGRAM_VERSION "1.1.2"
 
 #endif
