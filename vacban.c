@@ -139,7 +139,8 @@ static int is_banned(char *url)
 	curl_easy_cleanup(myHandle);
 
 	if (!rc && output.buffer) {
-		banned = strstr(output.buffer, "profile_ban_info") != 0;
+		banned = strstr(output.buffer,
+				"<vacBanned>1</vacBanned>") != 0;
 	}
 
 	free(output.buffer);
@@ -204,6 +205,7 @@ static int update(vacdb_t *db, int check_banned)
 			strcpy(url, "http://steamcommunity.com/profiles/");
 		}
 		strcat(url, entries[forkix]->id);
+		strcat(url, "?xml=1");
 
 		if (pipe(fds[forkix]) == -1) {
 			perror("pipe");
