@@ -14,11 +14,11 @@ OPTIONS
        -a, --add
            Add ID to database
 
+       -b, --banned
+           Show list of banned accounts
+
        -d, --dbfile
            Database file in use. "~/.vacbandb" is used if blank
-
-       -s, --show-banned
-           Show list of banned accounts
 
        -u, --update
            Update database with banned  information.   Use  twice  to  recheck

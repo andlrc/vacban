@@ -25,13 +25,13 @@ static void print_usage(void)
 static void print_help(void)
 {
 	printf("Usage: %s [OPTION]\n"
-	       "  -a, --add          Add ID to database\n"
-	       "  -d, --dbfile       Database file in use. ``~/.vacbandb'' is used if blank\n"
-	       "  -s, --show-banned  Show list of banned accounts\n"
-	       "  -u, --update       Update database with banned information\n"
-	       "                       Use twice to recheck already banned accounts\n"
-	       "  -h, --help         Show this help and exit\n"
-	       "  -V, --version      Output version information\n",
+	       "  -a, --add      Add ID to database\n"
+	       "  -b, --banned   Show list of banned accounts\n"
+	       "  -d, --dbfile   Database file in use. ``~/.vacbandb'' is used if blank\n"
+	       "  -u, --update   Update database with banned information\n"
+	       "                   Use twice to recheck already banned accounts\n"
+	       "  -h, --help     Show this help and exit\n"
+	       "  -V, --version  Output version information\n",
 	       PROGRAM_NAME);
 }
 
@@ -39,13 +39,13 @@ static struct option const long_options[] = {
 	{"version", no_argument, NULL, 'V'},
 	{"help", no_argument, NULL, 'h'},
 	{"add", required_argument, NULL, 'a'},
+	{"banned", no_argument, NULL, 'b'},
 	{"dbfile", required_argument, NULL, 'd'},
-	{"show-banned", no_argument, NULL, 's'},
 	{"update", no_argument, NULL, 'u'},
 	{NULL, 0, NULL, 0}
 };
 
-static char short_options[] = "a:d:suhV";
+static char short_options[] = "a:bd:uhV";
 
 struct curl_buff_s {
 	char *buffer;
@@ -286,11 +286,11 @@ int main(int argc, char **argv)
 		case 'a':
 			addarr[addlen++] = optarg;
 			break;
+		case 'b':
+			sflag++;
+			break;
 		case 'd':
 			dbfile = optarg;
-			break;
-		case 's':
-			sflag++;
 			break;
 		case 'u':
 			uflag++;
